@@ -1,81 +1,161 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "http://semantalytics.com/2019/05/ns/json-schema/webextension-manifest-chrome",
+  "id": "http://semantalytics.com/2019/05/ns/json-schema/webextension-manifest-chrome",
   "type": "object",
+  "$comment": "https://developer.chrome.com/apps/manifest",
   "properties": {
-    "app",
-    "manifest_version",
-    "name",
-    "version"
-  },
-  "required": [
-    "app",
-    "manifest_version",
-    "name",
-    "version"
-    ]
-}
+    "app": {
+      "type": "object",
+      "properties": {
+        "background": {
+          "$comment": "assuming this is optional",
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "manifest_version": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "default_locale": {
+      "type": "string",
+      "$comment": "are these restricted?"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icons": {
+      "type": "object"
+    },
+    "action_handlers" {},
+    "author": {},
   
-  // Required
-  "app": {
-    "background": {
-      // Optional
-      "scripts": ["background.js"]
+    "automation": ...,
+    "bluetooth": {
+      "type": "object",
+      "properties": {
+        "uuids": {
+          "type": "array",
+          "items": "string"
+        }
+      }
+    },
+  "commands": {
+      "type": "object",
+  ...},
+  "current_locale": ...,
+  "event_rules": {
+    "type": "array",
+    "items": "object"
+   },
+  "externally_connectable": {
+    "type": "object",
+    "properties": {
+      "matches": {
+        "type": "array"
+        "items" : "string",
+  },
+  "file_handlers": {
+    "type": "object"
+  },
+  "file_system_provider_capabilities": {
+    "type": "object",
+    "properties": {
+      "configurable": {
+        "type": "boolean"
+      },
+      "multiple_mounts": {
+        "type": "boolean,
+      },
+      "source": {
+        "type": "enumeration"
+      }
     }
   },
-  "manifest_version": 2,
-  "name": "My App",
-  "version": "versionString",
-
-  // Recommended
-  "default_locale": "en",
-  "description": "A plain text description",
-  "icons": {...},
-
-  // Optional
-  "action_handlers": ["new_note"],
-  "author": ...,
-  "automation": ...,
-  "bluetooth": {
-    "uuids": ["1105", "1006"]
+  "import": {
+    "type": "array",  
+    "items": 
+    [{"id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}],
   },
-  "commands": {...},
-  "current_locale": ...,
-  "event_rules": [{...}],
-  "externally_connectable": {
-    "matches": ["*://*.example.com/*"]
+  "key": {
+    "type": "string"
   },
-  "file_handlers": {...},
-  "file_system_provider_capabilities": {
-    "configurable": true,
-    "multiple_mounts": true,
-    "source": "network"
-  },
-  "import": [{"id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}],
-  "key": "publicKey",
   "kiosk": {
-    "always_update": ...,
-    "required_platform_version": ...
-  },
-  "kiosk_enabled": true,
-  "kiosk_only": true,
-  "kiosk_secondary_apps": ...,
-  "minimum_chrome_version": "versionString",
-  "nacl_modules": [...],
-  "oauth2": ...,
-  "offline_enabled": true,
-  "optional_permissions": ["tabs"],
-  "permissions": ["tabs"],
-  "platforms": ...,
-  "replacement_web_app": ...,
-  "requirements": {...},
-  "sandbox": [...],
-  "short_name": "Short Name",
-  "signature": ...,
-  "sockets": {
-    "tcp": {
-      "connect": "*"
+    "type": "object",
+    "properties" : {
+      "always_update": {
+        "type": "object"
+      },
+      "required_platform_version": {
+        "type": "object"
+      },
     },
+  },
+  "kiosk_enabled": {
+    "type": "boolean"
+  }
+  "kiosk_only": {
+    "type": "boolean"
+  }
+  "kiosk_secondary_apps": {
+    "type": object
+  },
+  "minimum_chrome_version": {
+    "type": "string"
+  },
+  "nacl_modules": {
+    "type": "array"
+  },
+  "oauth2": {
+    "type": "object"
+  },
+  "offline_enabled": {
+    "type": "boolean"
+  },
+  "optional_permissions": {
+    "type": "array"
+  },
+  "permissions": {
+    "type": "array"
+  },
+  "platforms": {
+    "type": "array"
+  },
+  "replacement_web_app": {
+    "type": "object"
+  },
+  "requirements": {
+    "type": "object"
+  },
+  "sandbox": {
+    "type": "array"
+  },
+  "short_name": {
+    "type": "string"
+  },
+  "signature": {
+    "type": "object" 
+  },
+  "sockets": {
+    "type": "object",
+    "properties": { 
+            "tcp": {
+              "connect": "*"
+            },
+    }
     "udp": {
       "send": "*"
     }
@@ -84,11 +164,32 @@
     "managed_schema": "schema.json"
   },
   "system_indicator": ...,
-  "update_url": "http://path/to/updateInfo.xml",
-  "url_handlers": {...},
-  "usb_printers": {
-    "filters": [...]
+  "update_url": {
+    "type": "string",
+    "regexp": "url regular expression&*&()*&*&)"
   },
-  "version_name": "aString",
-  "webview": {...}
+  "url_handlers": {
+    "type": "object"
+  },
+  "usb_printers": {
+    "type": "object",
+    "properties": {
+      "filters": {
+        "type": "array"
+    }
+  },
+  "version_name": {
+    "type": "string",
+  }, 
+  "webview": {
+    "type": "object"
+  },
+  "required": [
+    "app",
+    "manifest_version",
+    "name",
+    "version"
+    ]
+  }
 }
+

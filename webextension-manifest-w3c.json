@@ -1,0 +1,125 @@
+{
+  "$comment": "https://browserext.github.io/browserext/",
+  "$schema": "http://json-schema.org/schema#",
+  "id": "http://semantalytics.com/2019/05/ns/json-schema/webextension-manifest-w3c#",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "object",
+      "properties": {
+        "background": {
+          "$comment": "assuming this is optional",
+          "type": "object",
+          "properties": {
+            "scripts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "manifest_version": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "default_locale": {
+      "type": "string",
+      "$comment": "are these restricted?"
+    },
+    "description": {
+      "type": "string"
+    },
+    "icons": {
+      "type": "object"
+    },
+    "action_handlers" {},
+    "author": {},
+  
+    "automation": ...,
+    "bluetooth": {
+      "type": "object",
+      "properties": {
+        "uuids": {
+          "type": "array",
+          "items": "string"
+        }
+      }
+    },
+  "commands": {
+      "type": "object",
+  ...},
+  "current_locale": ...,
+  "event_rules": {
+    "type": "array",
+    "items": "object"
+   },
+  "externally_connectable": {
+    "type": "object",
+    "properties": {
+      "matches": {
+        "type": "array"
+        "items" : "string",
+  },
+  "file_handlers": {...},
+  "file_system_provider_capabilities": {
+    "configurable": true,
+    "multiple_mounts": true,
+    "source": "network"
+  },
+  "import": [{"id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}],
+  "key": "publicKey",
+  "kiosk": {
+    "always_update": ...,
+    "required_platform_version": ...
+  },
+  "kiosk_enabled": true,
+  "kiosk_only": true,
+  "kiosk_secondary_apps": ...,
+  "minimum_chrome_version": "versionString",
+  "nacl_modules": [...],
+  "oauth2": ...,
+  "offline_enabled": true,
+  "optional_permissions": ["tabs"],
+  "permissions": ["tabs"],
+  "platforms": ...,
+  "replacement_web_app": ...,
+  "requirements": {...},
+  "sandbox": [...],
+  "short_name": "Short Name",
+  "signature": ...,
+  "sockets": {
+    "tcp": {
+      "connect": "*"
+    },
+    "udp": {
+      "send": "*"
+    }
+  },
+  "storage": {
+    "managed_schema": "schema.json"
+  },
+  "system_indicator": ...,
+  "update_url": "http://path/to/updateInfo.xml",
+  "url_handlers": {...},
+  "usb_printers": {
+    "filters": [...]
+  },
+  "version_name": "aString",
+  "webview": {...}
+  "required": [
+    "app",
+    "manifest_version",
+    "name",
+    "version"
+    ]
+  }
+}
+
